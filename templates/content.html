@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <title>在线预览-{{ book.bname }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="http://fonts.googleapis.com/css?family=Oxygen|Marck+Script" rel="stylesheet" type="text/css">
+    <link href="{% static 'assets/css/bootstrap.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/font-awesome.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/admin.css' %}" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+	    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <style>
+        #txtComments:hover{
+            cursor: default;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="span2">
+
+             {% include 'AppBars.html' %} <!-- end main-left-col -->
+
+        </div> <!-- end span2 -->
+
+        <div class="span10">
+
+           {% include 'title.html' %}
+
+            <div class="main-area dashboard">
+
+                <div class="alert alert-info">
+                    <a class="close" data-dismiss="alert" href="#">x</a>
+                    <h4 class="alert-heading">提示</h4>
+                    喜欢本书吗？那就点击借阅把
+                </div>
+
+                <div class="row">
+
+                    <div class="span10">
+
+                        <div class="slate">
+
+                            <div class="page-header">
+                                <h1>{{ book.bname }}</h1>
+                                <h2>{{ book.buser }}</h2>
+                                <h3>{{ book.btype }}</h3>
+
+                            </div>
+
+                            <textarea id=txtComments readonly="readonly" style="resize:none;overflow-x:hidden;overflow-y:scroll;width: 900px;height:500px;">{{ content|truncatechars:'3000' }} </textarea>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="span10 footer">
+
+                        <p>&copy; M I six</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div> <!-- end span10 -->
+
+    </div> <!-- end row -->
+
+</div> <!-- end container -->
+
+<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="{% static 'assets/js/jquery.min.js' %}"></script>
+<script src="{% static 'assets/js/bootstrap.js' %}"></script>
+
+
+</body>
+</html>

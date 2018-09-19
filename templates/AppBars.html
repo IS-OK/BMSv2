@@ -1,0 +1,57 @@
+{% load staticfiles %}
+<style>
+    .close-nav{
+        height: 100px;
+        width: 100px;
+        margin-left: 20px;
+    }
+    .close-nav:hover{
+
+        background-color: #dca7a7;
+
+    }
+</style>
+<div class="main-left-col">
+    <div class="close-nav"><a  href="/login/?login=False"><img class='img-close' src="{% static 'assets/img/c.jpg' %}" alt=""></a></div>
+
+
+                <ul class="side-nav">
+
+                    <li class="dropdown">
+                        <a href="/index/"><i class="icon-home"></i> 主页</a>
+                    </li>
+
+
+                    <li class="dropdown">
+
+                    <li><a href="/borrow/"><i
+                                class="icon-shopping-cart"></i> 借阅</a></li>
+                    </li>
+
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="collapse" data-target="#store-dropdown" href="/person/"><i class="icon-sitemap"></i> 个人 </a>
+
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="collapse" data-target="#reports-dropdown" href="/allbook/1"><i
+                                class="icon-signal"></i> 全部</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="collapse" data-target="#members-dropdown" href="/content/"><i
+                                class="icon-group"></i> 电子书 </a>
+                    </li>
+
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="collapse" data-target="#settings-dropdown" href="/help/"><i
+                                class="icon-cogs"></i> 留言 </a>
+                    </li>
+
+
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="collapse" data-target="#help-dropdown" href="/contact/"><i
+                                class="icon-info-sign"></i> 关于</a>
+
+                    </li>
+                </ul>
+
+            </div>

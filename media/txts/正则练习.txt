@@ -1,0 +1,20 @@
+1，已知字符串:info = '<a href="http://www.baidu.com">baidu</a>'
+提取出网址："http://www.baidu.com"和链接文本:"baidu"
+
+
+2，字符串："one1two2three3four4" 用正则处理，输出 "1234"
+
+
+3，已知字符串：text = "JGood is a handsome boy, he is cool, clever, and so on..." 查找所有包含'oo'的单词
+
+
+4，简单的身份证号验证：身份证号码为15位或者18位，15位时全为数字，18位前17位为数字，最后一位是校验位，可能为数字或字符X 
+
+
+5，电话号码验证：
+验证规则，区号+号码，区号以0开头，3位或4位号码由7位或8位数字组成（3位区号配8位数字，4位区号配7位数字）区号与号码之间可无连接符，也可以“-”连接，如01088888888,010-88888888,0955-7777777 
+
+
+6，匹配一行文字中的所有开头的字母内容：s="i love you not because of who you are, but because of who i am when i am with you"
+
+

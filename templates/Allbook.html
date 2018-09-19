@@ -1,0 +1,188 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <title>全部书籍-{{ uname }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="http://fonts.googleapis.com/css?family=Oxygen|Marck+Script" rel="stylesheet" type="text/css">
+    <link href="{% static 'assets/css/bootstrap.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/font-awesome.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/admin.css' %}" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+	    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <style>
+         .page-number{
+            text-decoration:none;
+             color: darkgray;
+
+        }
+        .page-number:link{
+
+            font-size: 1.2em;
+            text-decoration:none;
+        }
+        .btu-page{
+            background-color: whitesmoke;
+            margin-left: 20px;
+            margin-right: 10px;
+            height: 30px;
+            text-align: center;
+            padding-top: 5px;
+        }
+        .btu-page:hover{
+            background-color: ivory;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="span2">
+
+             {% include 'AppBars.html' %} <!-- end main-left-col -->
+
+        </div> <!-- end span2 -->
+
+        <div class="span10">
+
+            {% include 'title.html' %}
+
+            <div class="main-area dashboard">
+
+                <div class="alert alert-info">
+                    <a class="close" data-dismiss="alert" href="#">x</a>
+                    <h4 class="alert-heading">提示</h4>
+                    如借阅书籍太多，请及时归还
+                </div>
+
+                <div class="row">
+
+                    <div class="span10 listing-buttons">
+
+                        <button class="btn btn-primary">View/Print Invoice</button>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="row">
+
+                    <div class="span10">
+
+                        <div class="slate">
+
+                            <div class="page-header">
+                                <h2>全部书籍</h2>
+                            </div>
+
+                            <table class="orders-table table">
+                                <thead>
+                                <tr>
+                                    <th>书籍名称</th>
+                                    <th class="value">作者</th>
+                                    <th class="actions">操作</th>
+                                </tr>
+                                </thead>
+
+
+
+                                <form action="/allbook/1" method="post">
+                                {% csrf_token %}
+                                {% for book in books %}
+
+                                <tr>
+                                    <td><a href="/content/?bid={{ book.bid }}">{{ book.bname }}</a> <span
+                                            class="label label-info">{{ book.btype }}</span><br/><span class="meta">详情</span>
+                                    </td>
+                                    <td class="value">
+                                        {{ book.buser }}
+                                    </td>
+                                    <td class="actions">
+
+                                        <input type="checkbox" name="check_boxs" value="{{ book.bid }}"/>
+                                    </td>
+                                </tr>
+
+                                {% endfor %}
+
+
+
+
+
+
+                                </tbody>
+
+                            </table>
+
+
+                        <table>
+                        <tr>
+
+                                    {% if books.has_previous and books.has_next %}
+                                    <td class="btu-page" style="width: 320px;"><a  class="page-number" href="/allbook/1">首页</a></td>
+                                    <td class="btu-page" style="width: 320px;"><a style="color:darkgray;" class="page-number" href="/allbook/{{ books.previous_page_number }}">←</a></td>
+                                    <td class="btu-page" style="width: 320px;"><a style="color:darkgray;" class="page-number" href="/allbook/{{ books.next_page_number }}">→</a></td>
+                                    {% elif not books.has_next %}
+                                    <td class="btu-page" style="width: 450px;"><a  class="page-number" href="/allbook/1">首页</a></td>
+                                    <td class="btu-page" style="width: 450px;"><a style="color:darkgray;" class="page-number" href="/allbook/{{ books.previous_page_number }}">←</a></td>
+                                    {% elif not books.has_previous %}
+                                        <td class="btu-page" style="width: 465px;"><a  class="page-number" href="/allbook/1">首页</a></td>
+                                    <td class="btu-page" style="width: 465px;"><a style="color:darkgray;" class="page-number" href="/allbook/{{ books.next_page_number }}">→</a></td>
+                                    {%endif %}
+                                </tr>
+</table>
+                        </div>
+
+                    </div>
+
+                    <div class="span10 listing-buttons">
+
+                        <button type="submit" class="btn btn-primary" onclick="window.alert('借阅成功')">借阅</button>
+
+                    </div>
+
+                </div>
+</form>
+
+
+                <div class="row">
+
+                    <div class="span10 footer">
+
+                        <p>&copy; M I six</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div> <!-- end span10 -->
+
+    </div> <!-- end row -->
+
+</div> <!-- end container -->
+
+<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="{% static 'assets/js/jquery.min.js' %}"></script>
+<script src="{% static 'assets/js/bootstrap.js' %}"></script>
+
+
+</body>
+</html>
